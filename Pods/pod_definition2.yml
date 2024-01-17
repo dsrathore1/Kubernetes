@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name:  my-app-pod-2
+  labels:
+    pod2: my-app-pod-2 #? Key-value pair must be same in matchLabels dictionary of ReplicaSet
+spec:
+  containers:
+    - name: redis-container
+      image: redis:latest

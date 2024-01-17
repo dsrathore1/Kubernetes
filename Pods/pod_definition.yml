@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-app-pod-1
+  labels:
+    pod1: my-app-pod-1 #? Key-value pair must be same in matchLabels dictionary of ReplicaSet
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx:alpine
+      ports:
+        - containerPort: 80
+          protocol: TCP
