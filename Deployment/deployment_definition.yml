@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app-deployment
+  labels:
+    name: my-app-deployment
+spec:
+  replicas: 3
+
+  selector:
+    matchLabels:
+      pod1: my-app-pod-1
+      pod2: my-app-pod-2
+
+  template:
+    metadata:
+      labels:
+        pod1: my-app-pod-1
+        pod2: my-app-pod-2
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx:alpine3.18
+        - name: redis-container
+          image: redis:latest
