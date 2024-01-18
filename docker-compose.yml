@@ -1,0 +1,22 @@
+version: "3.8"
+
+volumes:
+  node-vol:
+
+services:
+  node-app:
+    build:
+      context: ./App
+      dockerfile: Dockerfile
+    container_name: "Node_Application"
+    volumes:
+      - node-vol:/k8s/app
+      - ./App:/k8s/app
+    ports:
+      - ${PORT}:${PORT}
+    expose:
+      - ${PORT}
+    restart: "always"
+    stdin_open: true
+    env_file:
+      - .env

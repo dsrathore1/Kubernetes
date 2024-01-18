@@ -1,13 +1,13 @@
-FROM node:21.6.0
+FROM node:20-alpine3.18
 
 WORKDIR /k8s/app
 
 COPY package.json .
 
-RUN npm run install
+RUN npm install
 
 COPY . .
 
 EXPOSE ${PORT}
 
-CMD [ "nodemon", "index.js" ]
+CMD [ "npm", "start" ]
