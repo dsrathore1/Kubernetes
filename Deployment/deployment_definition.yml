@@ -19,7 +19,7 @@ spec:
         pod2: my-app-pod-2
     spec:
       containers:
-        - name: nginx-container
+        - name: nginx
           image: nginx:alpine3.18
         - name: redis-container
           image: redis:latest

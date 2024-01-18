@@ -15,7 +15,7 @@ services:
     ports:
       - ${PORT}:${PORT}
     expose:
-      - ${PORT}
+      - 4000
     restart: "always"
     stdin_open: true
     env_file:

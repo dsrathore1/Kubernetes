@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: simple-app-service #! Host name
+spec:
+  selector:
+    app: simple-backend-application
+  type: LoadBalancer #! Important to mentions
+  ports:
+    - port: 5000
+      targetPort: 5000
+      # nodePort: 30008
+      # protocol: TCP

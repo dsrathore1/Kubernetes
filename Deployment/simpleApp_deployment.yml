@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata:
+  name: simple-node-app
+  labels:
+    name: node-app-deployment
+
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: simple-backend-application
+
+  template:
+    metadata:
+      name: node-app-pod
+      labels:
+        app: simple-backend-application
+    spec:
+      containers:
+        - name: node-app-container
+          image: fradriks/node-app
+          ports:
+            - containerPort: 4000
