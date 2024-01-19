@@ -22,5 +22,3 @@ spec:
       containers:
         - name: node-app-container
           image: fradriks/node-app
-          ports:
-            - containerPort: 4000
