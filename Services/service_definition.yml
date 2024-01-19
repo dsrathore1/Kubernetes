@@ -5,9 +5,8 @@ metadata:
 spec:
   selector:
     app: simple-backend-application
-  type: LoadBalancer #! Important to mentions
+  type: LoadBalancer #! Important to mentions also in minikube 
   ports:
-    - port: 5000
-      targetPort: 5000
+    - port: 4000
       # nodePort: 30008
       # protocol: TCP
