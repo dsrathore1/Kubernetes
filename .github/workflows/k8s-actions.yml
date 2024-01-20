@@ -21,4 +21,4 @@ jobs:
         run: |
           cd App
           npm install
-      - run: "All done!🎉"
+      - run: echo "All done!🎉"
