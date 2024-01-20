@@ -1,6 +1,6 @@
 <h1 align='center'> Kubernetes Learning Journey 🎓</h1>
 
-Welcome to my Kubernetes learning journey! 🌟 In this repository, I've organized my exploration of Kubernetes by creating a folder for each Kubernetes object. Each folder contains YAML files for the respective object. Additionally, I've dockerized the applications and set up continuous integration using CircleCI.
+Welcome to my Kubernetes learning journey! 🌟 In this repository, I've organized my exploration of Kubernetes by creating a folder for each Kubernetes object. Each folder contains YAML files for the respective object. Additionally, I've dockerized the applications and set up continuous integration using GitHub-Actions.
 
 ## Objectives 🏹
 
