@@ -10,6 +10,10 @@ app.get("/", (req, res) => {
     });
 });
 
+app.get("/about", (req, res) => {
+    res.send("Welcome to about page")
+});
+
 app.listen(PORT, () => {
     console.log(`Your site url is http://localhost:${PORT}`);
 });
