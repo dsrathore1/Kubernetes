@@ -14,8 +14,6 @@ services:
       - ./App:/k8s/app
     ports:
       - ${PORT}:${PORT}
-    expose:
-      - 4000
     restart: "always"
     stdin_open: true
     env_file:
