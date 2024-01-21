@@ -27,7 +27,6 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          cd App
           npm install
           echo "All installation done!!! 🎊🎉"
 
