@@ -1,7 +1,8 @@
+import userModel from "../Database/Model/user.js";
 
 export function homePage(req, res) {
     res.render("home.ejs", {
-        heading: "MERN_APP-Home Page",
+        heading: "Backend-Home Page",
         message: "Home Page"
     });
 }
@@ -23,4 +24,19 @@ export function infoPage(req, res) {
             }
         ]
     });
+}
+
+
+export async function createUser(req, res) {
+    const data = req.body;
+    const user = await userModel(data);
+
+    try {
+
+        await user.save();
+
+        res.json(user);
+    } catch (error) {
+        console.log(error)
+    }
 }
