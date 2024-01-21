@@ -4,7 +4,7 @@ run-name: New commit from MERN Branch ${{github.run_number}}
 on:
   push:
     branches:
-      - "MERN"
+      - "MERN-APP"
 
 jobs:
   frontend_flow:
