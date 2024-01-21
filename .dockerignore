@@ -1,2 +1,5 @@
 node_modules
 .vscode
+Dockerfile
+.dockerignore
+docker-compose.yml

@@ -1,10 +1,11 @@
 name: Frontend-Workflow
-run-name: New commit from MERN Branch ${{github.run_number}}
+run-name: New commit from MERN-APP Branch/Frontend ${{github.run_number}}
 
 on:
   push:
     branches:
       - "MERN-APP"
+  workflow_dispatch:
 
 jobs:
   frontend_flow:
@@ -19,7 +20,7 @@ jobs:
       - name: Setup Node js
         uses: actions/setup-node@v4
 
-      - name: Frontend dependencies installation
+      - name: Install and Build Backend dependencies
         run: |
           npm install
           npm run build
@@ -38,4 +39,4 @@ jobs:
         with:
           context: ./frontend
           push: true
-          tags: fradriks/mern-app:latest
+          tags: fradriks/app-frontend:latest

@@ -3,11 +3,13 @@ version: "3"
 volumes:
   mern_app-vol:
     name: mern-vol
+  mongo_db:
 
 services:
+  #? Containerize frontend
   app-frontend:
     container_name: Frontend-Container
-    image: fradriks/app-frontend
+    image: fradriks/app-frontend:latest
 
     build:
       context: ./frontend
@@ -19,3 +21,41 @@ services:
 
     ports:
       - 3000:80
+
+    depends_on:
+      - app-backend
+
+  #? Containerize MongoDB Database
+  db:
+    container_name: mongo_db-Container
+    image: mongo:6.0.13-jammy
+    restart: "always"
+    volumes:
+      - mongo_db:/data/db
+    ports:
+      - 27017:27017
+
+  #? Containerize Backend Service
+  app-backend:
+    container_name: Backend-Container
+    image: fradriks/app-backend:latest
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+
+    volumes:
+      - mern_app-vol:/app/backend
+      - ./backend:/app/backend
+
+    ports:
+      - 4001:4000
+
+    env_file:
+      - ./backend/.env
+
+    environment:
+      PORT: 4000
+      MONGODB_URI: mongodb://app-backend:27017
+
+    depends_on:
+      - db

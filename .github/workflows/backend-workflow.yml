@@ -1,0 +1,45 @@
+name: Backend Workflow
+run-name: New commit from MERN-APP branch/Backend ${{github.run_number}}
+
+on:
+  push:
+    branches:
+      - "MERN-APP"
+  workflow_dispatch:
+
+jobs:
+  backend_flow:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ./backend
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+
+      - name: Docker Login
+        uses: docker/login-action@v3
+        with:
+          username: ${{secrets.DOCKERHUB_USERNAME}}
+          password: ${{secrets.DOCKERHUB_TOKEN}}
+
+      - name: Docker build image
+        uses: docker/setup-buildx-action@v3
+
+      - name: Install and Build Backend dependencies
+        run: |
+          npm install
+          npm start
+          npm test
+
+      - name: Push docker image to DockerHub
+        uses: docker/build-push-action@v3
+        with:
+          context: ./backend
+          push: true
+          tags: fradriks/app-backend:latest
