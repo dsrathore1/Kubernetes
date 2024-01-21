@@ -1,0 +1,21 @@
+version: "3"
+
+volumes:
+  mern_app-vol:
+    name: mern-vol
+
+services:
+  app-frontend:
+    container_name: Frontend-Container
+    image: fradriks/app-frontend
+
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+
+    volumes:
+      - mern_app-vol:/app/frontend
+      - ./frontend:/app/frontend
+
+    ports:
+      - 3000:80
