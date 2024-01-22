@@ -22,6 +22,9 @@ services:
     ports:
       - 3000:80
 
+    expose:
+      - 3000
+
     depends_on:
       - app-backend
 
@@ -34,12 +37,14 @@ services:
       - mongo_db:/data/db
     ports:
       - 27017:27017
+    expose:
+      - 27017
 
   #? Containerize Backend Service
   app-backend:
     container_name: Backend-Container
     image: fradriks/app-backend:latest
-    restart: 'always'
+    restart: "always"
     build:
       context: ./backend
       dockerfile: Dockerfile
@@ -57,6 +62,9 @@ services:
     environment:
       PORT: 4000
       MONGODB_URI: mongodb://db:27017
+
+    expose:
+      - 4000
 
     depends_on:
       - db
