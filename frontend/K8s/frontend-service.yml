@@ -8,5 +8,4 @@ spec:
     app: frontend-pod
   ports:
   - name:  frontend-port
-    port:  3000
-    protocol: TCP
+    port:  80

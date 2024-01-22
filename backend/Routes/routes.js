@@ -9,7 +9,7 @@ routes.get('/info', infoPage);
 
 routes.post("/", createUser);
 
-routes.delete("/delete", async (req, res) => {
+routes.delete("/deleteAllUser", async (req, res) => {
     await userModel.deleteMany();
     res.send("Delete all data successfully");
 });

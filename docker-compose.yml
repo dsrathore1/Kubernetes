@@ -22,23 +22,20 @@ services:
     ports:
       - 3000:80
 
-    expose:
-      - 3000
-
     depends_on:
       - app-backend
 
-  #? Containerize MongoDB Database
-  db:
-    container_name: mongo_db-Container
-    image: mongo:latest
-    restart: "always"
-    volumes:
-      - mongo_db:/data/db
-    ports:
-      - 27017:27017
-    expose:
-      - 27017
+  #? Containerize MongoDB Database locally
+  # db:
+  #   container_name: mongo_db-Container
+  #   image: mongo:latest
+  #   restart: "always"
+  #   volumes:
+  #     - mongo_db:/data/db
+  #   ports:
+  #     - 27017:27017
+  #   expose:
+  #     - 27017
 
   #? Containerize Backend Service
   app-backend:
@@ -57,14 +54,10 @@ services:
       - 4001:4000
 
     env_file:
-      - ./backend/.env
+      - .env
 
     environment:
-      PORT: 4000
-      MONGODB_URI: mongodb://db:27017
-
-    expose:
-      - 4000
-
-    depends_on:
-      - db
+      MONGODB_URI: ${MONGODB_URI}
+#? DB is locally
+# depends_on:
+#   - db
