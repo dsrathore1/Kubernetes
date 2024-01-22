@@ -1,7 +1,9 @@
-import mongoose from "mongoose"
+import mongoose from "mongoose";
+
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017'
 
 const connectDB = async () => {
-    await mongoose.connect(process.env.MONGODB_URI, {
+    await mongoose.connect(MONGODB_URI, {
         dbName: process.env.DB_NAME
     });
 
